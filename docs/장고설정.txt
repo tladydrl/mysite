@@ -64,9 +64,10 @@
 11. static 디렉토리 설정
     settings.py 에
 
+12. template include(block) 작업
 
 
-12. Application 만들기
+13. Application 만들기
 
     1)  main 애플리케이션 만들기
           1. python manage.py startapp main
@@ -78,3 +79,19 @@
           4. url.py 에 url 매핑
           5. views에 핸들러 함수 추가
           6. 화면을 렌더링하는 template 작업
+
+    2) user 애플리케이션 만들기
+          1. python manage.py startapp user
+          2. user 애플리케이션 등록
+             settings.py의 INSTALLED_APPS 에 추가
+          3. templates
+                |-------- user
+             애플리케이션 template 디렉토리 생성(확인)
+
+          4-1 Model 정의
+          4-2 python manage.py makemigrations
+          4-3 python manage.py migrate
+
+          5. url.py 에 url 매핑
+          6. views에 핸들러 함수 추가
+          7. 화면을 렌더링하는 template 작업
