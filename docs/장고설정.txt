@@ -1,0 +1,84 @@
+- mysql djdb2 데이터베이스 생성
+  create database djdb2;
+- mysql djdb2 계정 생성
+  create user 'djdb2'@'localhost' identified by 'djdb2';
+- djdb2 계정 권한 주기
+  grant all privileges on djdb2.* to 'djdb2'@'localhost';
+
+
+
+- mysite 장고 프로젝트 만들기 -
+
+1.PyCharm에서 mysite 프로젝트 만들기
+
+2.Django 설치
+  터미널에서
+  pip install django
+
+3.장고 프로젝트 생성
+  터미널에서
+  django-admin startproject mysite
+
+4. 디렉토리 정리
+
+
+5.mysqlclient 설치 (setting에서 설치)
+
+6. settings.py 설정
+
+    1) TIME_ZONE = 'Asia/Seoul'
+    2) DATABASES = {
+    	'default': {
+ 	        'ENGINE': 'django.db.backends.mysql',
+        	'NAME': 'djdb2',
+        	'USER': 'djdb2',
+        	'PASSWORD': 'djdb2',
+        	'HOST': '127.0.0.1',
+        	'PORT': 3306
+    		}
+  	}
+
+7. 기본적으로 장고 프로젝트가 관리하는 테이블을 생성
+   터미널에서
+   python manage.py migrate
+
+
+8. 장고 프로젝트 관리자 계정 생성하기
+   터미널에서
+   python manage.py createsuperuser
+
+9. template 디렉토리 만들기 및 설정
+   mysite
+       |_______ templates
+
+   settings.py의 TEMPLATES 변수에 'DIRS': [os.path.join(BASE_DIR, 'templates')]
+
+
+10. 지금까지 작업 내용 확인하기
+   1) 서버 시작하기
+      터미널에서
+      python manage.py runserver 0.0.0.0:8888
+
+   2) 브라우저에서
+      http://localhost:8888 로 접근
+
+
+11. Application 만들기
+
+    예제) helloworld 애플리케이션 만들기
+
+          1. python manage.py startapp helloworld
+
+          2. hellowolrd 애플리케이션 등록
+             settings.py의 INSTALLED_APPS 에 추가
+
+          3. templates
+                |-------- helloworld
+
+             애플리케이션 template 디렉토리 생성
+
+          4. url.py 에 url 매핑
+
+          5. views에 핸들러 함수 추가
+
+          6. 화면을 렌더링하는 template 작업
