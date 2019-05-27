@@ -6,7 +6,6 @@
   grant all privileges on djdb2.* to 'djdb2'@'localhost';
 
 
-
 - mysite 장고 프로젝트 만들기 -
 
 1.PyCharm에서 mysite 프로젝트 만들기
@@ -62,23 +61,20 @@
    2) 브라우저에서
       http://localhost:8888 로 접근
 
+11. static 디렉토리 설정
+    settings.py 에
 
-11. Application 만들기
 
-    예제) helloworld 애플리케이션 만들기
 
-          1. python manage.py startapp helloworld
+12. Application 만들기
 
-          2. hellowolrd 애플리케이션 등록
+    1)  main 애플리케이션 만들기
+          1. python manage.py startapp main
+          2. main 애플리케이션 등록
              settings.py의 INSTALLED_APPS 에 추가
-
           3. templates
-                |-------- helloworld
-
-             애플리케이션 template 디렉토리 생성
-
+                |-------- main
+             애플리케이션 template 디렉토리 생성(확인)
           4. url.py 에 url 매핑
-
           5. views에 핸들러 함수 추가
-
           6. 화면을 렌더링하는 template 작업
