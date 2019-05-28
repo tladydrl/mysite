@@ -1,5 +1,5 @@
 from django.forms import model_to_dict
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -32,7 +32,6 @@ def loginform(request):
 def login(request):
     result = User.objects.filter(email=request.POST['email']).filter(password=request.POST['password'])
 
-
     # 로그인 실패
     if len(result) == 0:
         return HttpResponseRedirect('/user/loginform?result=fail')
@@ -47,3 +46,26 @@ def login(request):
 def logout(request):
     del request.session['authuser']
     return HttpResponseRedirect('/')
+
+
+def updateform(request):
+    user = User.objects.get(id=request.session['authuser']['id'])
+    data = {'user': user}
+    return render(request, 'user/updateform.html', data)
+
+
+def update(request):
+
+    user = User.objects.get(id=request.session['authuser']['id'])
+
+    user.name = request.POST['name']
+    user.gender = request.POST['gender']
+    if request.POST['password'] is not '':
+        user.password = request.POST['password']
+
+    user.save()
+
+    return HttpResponseRedirect('/user/updateform')
+
+
+
