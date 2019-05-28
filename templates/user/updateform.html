@@ -6,6 +6,12 @@
 
 
 {% block content %}
+
+			{% if request.GET.result == 'success' %}
+			<script>
+				alert('업데이트를 성공했습니다.');
+			</script>
+			{% endif %}
 			<div id="user">
 				<form id="join-form" name="joinForm" method="post" action="/user/update">{% csrf_token %}
 					<label class="block-label" for="name">이름</label>

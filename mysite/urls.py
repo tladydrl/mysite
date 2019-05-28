@@ -20,6 +20,7 @@ import guestbook
 import main.views as main_views
 import user.views as user_views
 import guestbook.views as guestbook_views
+import board.views as board_views
 
 urlpatterns = [
     path('', main_views.index),
@@ -37,6 +38,11 @@ urlpatterns = [
     path('guestbook/add', guestbook_views.add),
     path('guestbook/deleteform', guestbook_views.deleteform),
     path('guestbook/delete', guestbook_views.delete),
+
+    path('board/', board_views.index),
+
+    path('board/c', board_views.create),
+    path('board/r', board_views.read),
 
     path('admin/', admin.site.urls),
 ]

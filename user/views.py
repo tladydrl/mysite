@@ -1,5 +1,5 @@
 from django.forms import model_to_dict
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -65,7 +65,7 @@ def update(request):
 
     user.save()
 
-    return HttpResponseRedirect('/user/updateform')
+    return HttpResponseRedirect('/user/updateform?result=success')
 
 
 
