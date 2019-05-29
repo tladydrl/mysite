@@ -40,9 +40,12 @@ urlpatterns = [
     path('guestbook/delete', guestbook_views.delete),
 
     path('board/', board_views.index),
-
     path('board/c', board_views.create),
-    path('board/r', board_views.read),
+    path('board/r', board_views.readone),
+    path('board/u', board_views.update),
+    path('board/d', board_views.delete),
+
+
 
     path('admin/', admin.site.urls),
 ]
